@@ -1,14 +1,10 @@
-package org.informatorio.servicio.menu.clientes;
+package org.informatorio.servicio.clientes;
 
 import org.informatorio.domain.Banco;
 import org.informatorio.domain.Cliente;
 import org.informatorio.input.InputConsoleService;
 
-import java.lang.reflect.Array;
-import java.util.Optional;
-import java.util.List;
-
-public class MenuClientesImpl implements MenuClientes{
+public class ServicioClientesImpl implements ServicioClientes {
 
     public static final String MENSAJE_INGRESAR_NRO_CLIENTE = "Ingrese el número de cliente: ";
     public static final String MENSAJE_INEXISTENCIA_CLIENTES = "No hay cliente/s registrado/s.";
@@ -47,6 +43,11 @@ public class MenuClientesImpl implements MenuClientes{
             return cliente;
         }
 
+    }
+
+    @Override
+    public String getNombreTitular(Cliente cliente){
+        return cliente.getNombre();
     }
 
 }

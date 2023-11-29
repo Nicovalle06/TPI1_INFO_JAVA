@@ -1,29 +1,31 @@
-package org.informatorio.servicio.menu.principal;
+package org.informatorio.servicio.principal;
 
 import org.informatorio.input.InputConsoleService;
 import org.informatorio.servicio.archivos.ArchivoServicio;
-import org.informatorio.servicio.menu.banco.MenuBanco;
-import org.informatorio.servicio.menu.clientes.MenuClientes;
-import org.informatorio.servicio.menu.ctaahorro.MenuCtaAhorro;
-import org.informatorio.servicio.menu.ctacorriente.MenuCtaCorriente;
-import org.informatorio.servicio.menu.cuentas.MenuCuentas;
+import org.informatorio.servicio.banco.ServicioBanco;
+import org.informatorio.servicio.clientes.ServicioClientes;
+import org.informatorio.servicio.ctaahorro.ServicioCtaAhorro;
+import org.informatorio.servicio.ctacorriente.ServicioCtaCorriente;
+import org.informatorio.servicio.ctaservice.CtaService;
+import org.informatorio.servicio.cuentas.ServicioCuentas;
 import org.informatorio.domain.Banco;
 import org.informatorio.domain.Cliente;
 
 public class MenuPrincipal implements MenuPrincipalImpl {
 
-    private  MenuClientes menuClientes;
-    private MenuCuentas menuCuentas;
-    private MenuBanco menuBanco;
-    private MenuCtaAhorro menuCtaAhorro;
-    private MenuCtaCorriente menuCtaCorriente;
+    private ServicioClientes servicioClientes;
+    private ServicioCuentas servicioCuentas;
+    private ServicioBanco servicioBanco;
+    private ServicioCtaAhorro servicioCtaAhorro;
+    private ServicioCtaCorriente servicioCtaCorriente;
     private ArchivoServicio archivoServicio;
-    public MenuPrincipal(MenuClientes menuClientes, MenuCuentas menuCuentas, MenuBanco menuBanco, MenuCtaAhorro menuCtaAhorro, MenuCtaCorriente menuCtaCorriente, ArchivoServicio archivoServicio) {
-        this.menuClientes = menuClientes;
-        this.menuCuentas = menuCuentas;
-        this.menuBanco = menuBanco;
-        this.menuCtaAhorro = menuCtaAhorro;
-        this.menuCtaCorriente = menuCtaCorriente;
+    public MenuPrincipal(ServicioClientes servicioClientes, ServicioCuentas servicioCuentas, ServicioBanco servicioBanco, ServicioCtaAhorro servicioCtaAhorro,
+                         ServicioCtaCorriente servicioCtaCorriente, ArchivoServicio archivoServicio) {
+        this.servicioClientes = servicioClientes;
+        this.servicioCuentas = servicioCuentas;
+        this.servicioBanco = servicioBanco;
+        this.servicioCtaAhorro = servicioCtaAhorro;
+        this.servicioCtaCorriente = servicioCtaCorriente;
         this.archivoServicio = archivoServicio;
     }
 
@@ -55,70 +57,66 @@ public class MenuPrincipal implements MenuPrincipalImpl {
             switch (opc) {
                 case 1: //Registrar un nuevo cliente
 
-                    menuBanco.registroCliente(banco);
+                    servicioBanco.registroCliente(banco);
                     break;
 
                 case 2: //Listar clientes
 
-                    menuClientes.mostrarClientes(banco);
+                    servicioClientes.mostrarClientes(banco);
                     break;
 
                 case 3: // Consultar saldos
 
-                    Cliente clientes = menuClientes.buscaCliente(banco);
+                    Cliente clientes = servicioClientes.buscaCliente(banco);
                     if (clientes != null) {
-                        menuCuentas.mostrarCuentas(clientes);
+                        servicioCuentas.mostrarCuentas(clientes);
                     }
                     break;
 
                 case 4: //Agregar cuenta a un cliente existente
 
-                    Cliente nvaCtaCliente = menuClientes.buscaCliente(banco);
+                    int tpCta = servicioCuentas.seleccionarCuenta();
 
-                    if (nvaCtaCliente != null) {
+                    if (tpCta == 1) {
 
-                        int tpCta = menuCuentas.seleccionarCuenta();
-                        if (tpCta == 1) {
-                            double saldo = menuCuentas.obtenerSaldo();
-                            menuCtaAhorro.agregarCtaAhorro(nvaCtaCliente, saldo);
+                        servicioCtaAhorro.agregarCtaAhorro(banco);
 
-                        } else if (tpCta == 2) {
-                            double saldo = menuCuentas.obtenerSaldo();
-                            menuCtaCorriente.agregarCtaCorriente(nvaCtaCliente, saldo);
+                    } else if (tpCta == 2) {
 
-                        }
+                        servicioCtaCorriente.agregarCtaCorriente(banco);
                     }
+
                     break;
 
                 case 5: //Eliminar cuenta de un cliente
 
-                    Cliente eliminaCtaCliente = menuClientes.buscaCliente(banco);
+                    Cliente eliminaCtaCliente = servicioClientes.buscaCliente(banco);
                     if (eliminaCtaCliente != null) {
-                        menuCuentas.eliminarCta(eliminaCtaCliente);
+                        servicioCuentas.eliminarCta(eliminaCtaCliente);
                     }
                     break;
 
                 case 6: //Depositar dinero a una cuenta
 
-                    Cliente depositoCtaCliente = menuClientes.buscaCliente(banco);
+                    Cliente depositoCtaCliente = servicioClientes.buscaCliente(banco);
                     if (depositoCtaCliente != null) {
-                        menuCuentas.depositoCta(depositoCtaCliente);
+                        servicioCuentas.depositoCta(depositoCtaCliente);
                     }
                     break;
 
                 case 7: //Retirar dinero de una cuenta
 
-                    Cliente retiroCtaCliente = menuClientes.buscaCliente(banco);
+                    Cliente retiroCtaCliente = servicioClientes.buscaCliente(banco);
                     if (retiroCtaCliente != null) {
-                        menuCuentas.retirarDinero(retiroCtaCliente);
+                        servicioCuentas.retirarDinero(retiroCtaCliente);
                     }
                     break;
 
                 case 8: //Consultar saldo total de un cliente
 
-                    Cliente cliSaldo = menuClientes.buscaCliente(banco);
+                    Cliente cliSaldo = servicioClientes.buscaCliente(banco);
                     if (cliSaldo != null) {
-                        menuCuentas.consultaSaldoTotal(cliSaldo);
+                        servicioCuentas.consultaSaldoTotal(cliSaldo);
                     }
                     break;
 

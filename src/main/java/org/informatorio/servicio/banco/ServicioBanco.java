@@ -1,7 +1,7 @@
-package org.informatorio.servicio.menu.banco;
+package org.informatorio.servicio.banco;
 
 import org.informatorio.domain.Banco;
 
-public interface MenuBanco {
+public interface ServicioBanco {
     void registroCliente(Banco banco);
 }

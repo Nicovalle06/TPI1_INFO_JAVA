@@ -1,12 +1,11 @@
-package org.informatorio.servicio.menu.clientes;
+package org.informatorio.servicio.clientes;
 
 import org.informatorio.domain.Banco;
 import org.informatorio.domain.Cliente;
 
-import java.util.Optional;
-
-public interface MenuClientes {
+public interface ServicioClientes {
     void mostrarClientes(Banco banco);
 
    Cliente buscaCliente(Banco banco);
+   String getNombreTitular(Cliente cliente);
 }

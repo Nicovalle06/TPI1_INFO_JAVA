@@ -1,9 +1,8 @@
-package org.informatorio.servicio.menu.cuentas;
+package org.informatorio.servicio.cuentas;
 
 import org.informatorio.domain.Cliente;
-import org.informatorio.domain.Cuenta;
 
-public interface MenuCuentas {
+public interface ServicioCuentas {
     void mostrarCuentas(Cliente cliente);
     void consultaSaldoTotal(Cliente cliente);
     int seleccionarCuenta();

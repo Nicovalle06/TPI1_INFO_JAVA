@@ -1,4 +1,4 @@
-package org.informatorio.servicio.menu.cuentas;
+package org.informatorio.servicio.cuentas;
 
 import org.informatorio.domain.Cliente;
 import org.informatorio.domain.Cuenta;
@@ -6,7 +6,7 @@ import org.informatorio.domain.CuentaAhorro;
 import org.informatorio.domain.CuentaCorriente;
 import org.informatorio.input.InputConsoleService;
 
-public class MenuCuentasImpl implements MenuCuentas{
+public class ServicioCuentasImpl implements ServicioCuentas {
     public static final String MENSAJE_INEXISTENCIA_CUENTAS = "No hay cuenta/s asociada/s a el cliente informado.";
     public static final String MENSAJE_SALDO_TOTAL = "El saldo total de todas sus cuentas es de $";
     public static final String MENSAJE_SELECCION_CUENTA = "Ingrese el tipo de cuenta en Nro. (1-Ahorro/2-Corriente): ";

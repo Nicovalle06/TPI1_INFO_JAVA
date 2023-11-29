@@ -1,12 +1,11 @@
-package org.informatorio.servicio.menu.banco;
+package org.informatorio.servicio.banco;
 
 import org.informatorio.domain.Banco;
 import org.informatorio.domain.Cliente;
-import org.informatorio.input.InputConsoleService;
 
 import java.util.Scanner;
 
-public class MenuBancoImpl implements MenuBanco{
+public class ServicioBancoImpl implements ServicioBanco {
 
     Scanner sc = new Scanner(System.in);
     public static final String MENSAJE_NOMBRE_CLIENTE = "Ingrese el nombre del Cliente: ";

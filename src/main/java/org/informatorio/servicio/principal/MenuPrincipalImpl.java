@@ -1,4 +1,4 @@
-package org.informatorio.servicio.menu.principal;
+package org.informatorio.servicio.principal;
 
 public interface MenuPrincipalImpl {
     void iniciar();
