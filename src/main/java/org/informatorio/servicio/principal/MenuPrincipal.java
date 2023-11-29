@@ -84,6 +84,9 @@ public class MenuPrincipal implements MenuPrincipalImpl {
                     } else if (tpCta == 2) {
 
                         servicioCtaCorriente.agregarCtaCorriente(banco);
+                    } else {
+
+                        System.out.println("Error: Tipo de cuenta inválida!!");
                     }
 
                     break;
