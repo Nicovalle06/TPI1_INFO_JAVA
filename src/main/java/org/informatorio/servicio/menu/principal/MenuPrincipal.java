@@ -1,4 +1,4 @@
-package org.informatorio.servicio.principal;
+package org.informatorio.servicio.menu.principal;
 
 import org.informatorio.input.InputConsoleService;
 import org.informatorio.servicio.archivos.ArchivoServicio;
@@ -6,7 +6,6 @@ import org.informatorio.servicio.banco.ServicioBanco;
 import org.informatorio.servicio.clientes.ServicioClientes;
 import org.informatorio.servicio.ctaahorro.ServicioCtaAhorro;
 import org.informatorio.servicio.ctacorriente.ServicioCtaCorriente;
-import org.informatorio.servicio.ctaservice.CtaService;
 import org.informatorio.servicio.cuentas.ServicioCuentas;
 import org.informatorio.domain.Banco;
 import org.informatorio.domain.Cliente;

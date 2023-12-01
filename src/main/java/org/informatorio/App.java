@@ -13,7 +13,7 @@ import org.informatorio.servicio.ctaahorro.ServicioCtaAhorroImpl;
 import org.informatorio.servicio.ctaahorro.ServicioCtaAhorro;
 import org.informatorio.servicio.ctacorriente.ServicioCtaCorrienteImpl;
 import org.informatorio.servicio.ctacorriente.ServicioCtaCorriente;
-import org.informatorio.servicio.principal.MenuPrincipal;
+import org.informatorio.servicio.menu.principal.MenuPrincipal;
 
 
 public class App {
