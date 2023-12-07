@@ -14,6 +14,8 @@ import org.informatorio.servicio.ctaahorro.ServicioCtaAhorro;
 import org.informatorio.servicio.ctacorriente.ServicioCtaCorrienteImpl;
 import org.informatorio.servicio.ctacorriente.ServicioCtaCorriente;
 import org.informatorio.servicio.menu.principal.MenuPrincipal;
+import org.informatorio.servicio.ctaservice.CtaService;
+import org.informatorio.servicio.ctaservice.CtaServiceImpl;
 
 
 public class App {
@@ -26,9 +28,10 @@ public class App {
     ServicioCuentas servicioCuentas = new ServicioCuentasImpl();
     ServicioCtaAhorro servicioCtaAhorro = new ServicioCtaAhorroImpl();
     ServicioCtaCorriente servicioCtaCorriente = new ServicioCtaCorrienteImpl();
+    CtaService ctaService = new CtaServiceImpl();
     ArchivoServicio archivoServicio = new ArchivoServicioImpl();
 
-    MenuPrincipal menuPrincipal = new MenuPrincipal(servicioClientes, servicioCuentas, servicioBanco, servicioCtaAhorro, servicioCtaCorriente, archivoServicio);
+    MenuPrincipal menuPrincipal = new MenuPrincipal(servicioClientes, servicioCuentas, servicioBanco, servicioCtaAhorro, servicioCtaCorriente, archivoServicio, ctaService);
 
     menuPrincipal.iniciar();
 

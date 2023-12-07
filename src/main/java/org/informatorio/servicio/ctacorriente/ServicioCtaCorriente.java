@@ -4,5 +4,5 @@ import org.informatorio.domain.Banco;
 
 public interface ServicioCtaCorriente {
 
-    void agregarCtaCorriente(Banco banco);
+    void agregarCtaCorriente();
 }

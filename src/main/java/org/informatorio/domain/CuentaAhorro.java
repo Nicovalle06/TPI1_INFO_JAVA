@@ -4,8 +4,11 @@ public class CuentaAhorro extends Cuenta{
     private double interesBco = 10; //Defino una tasa de interés que manejará el banco la cuál será del 10%
     private double tasaInteres;
 
-    public CuentaAhorro(String tipoCta, String titular, Double saldo) {
-        super(tipoCta, titular, saldo);
+    public CuentaAhorro() {
+    }
+
+    public CuentaAhorro(Cuenta cuenta) {
+        super(cuenta.getTipoCta(), cuenta.getTitular(), cuenta.getSaldo());
         this.tasaInteres = interesBco;
     }
 

@@ -9,6 +9,7 @@ import org.informatorio.servicio.ctacorriente.ServicioCtaCorriente;
 import org.informatorio.servicio.cuentas.ServicioCuentas;
 import org.informatorio.domain.Banco;
 import org.informatorio.domain.Cliente;
+import org.informatorio.servicio.ctaservice.CtaService;
 
 public class MenuPrincipal implements MenuPrincipalImpl {
 
@@ -18,14 +19,16 @@ public class MenuPrincipal implements MenuPrincipalImpl {
     private ServicioCtaAhorro servicioCtaAhorro;
     private ServicioCtaCorriente servicioCtaCorriente;
     private ArchivoServicio archivoServicio;
+    private CtaService ctaService;
     public MenuPrincipal(ServicioClientes servicioClientes, ServicioCuentas servicioCuentas, ServicioBanco servicioBanco, ServicioCtaAhorro servicioCtaAhorro,
-                         ServicioCtaCorriente servicioCtaCorriente, ArchivoServicio archivoServicio) {
+                         ServicioCtaCorriente servicioCtaCorriente, ArchivoServicio archivoServicio, CtaService ctaService) {
         this.servicioClientes = servicioClientes;
         this.servicioCuentas = servicioCuentas;
         this.servicioBanco = servicioBanco;
         this.servicioCtaAhorro = servicioCtaAhorro;
         this.servicioCtaCorriente = servicioCtaCorriente;
         this.archivoServicio = archivoServicio;
+        this.ctaService = ctaService;
     }
 
     public MenuPrincipal() {
@@ -74,21 +77,14 @@ public class MenuPrincipal implements MenuPrincipalImpl {
 
                 case 4: //Agregar cuenta a un cliente existente
 
-                    int tpCta = servicioCuentas.seleccionarCuenta();
+                    Cliente NvaCtaCliente = servicioClientes.buscaCliente(banco);
 
-                    if (tpCta == 1) {
-
-                        servicioCtaAhorro.agregarCtaAhorro(banco);
-
-                    } else if (tpCta == 2) {
-
-                        servicioCtaCorriente.agregarCtaCorriente(banco);
-                    } else {
-
-                        System.out.println("Error: Tipo de cuenta inválida!!");
+                    if (NvaCtaCliente != null) {
+                        int tpCta = servicioCuentas.seleccionarCuenta();
+                        ctaService.agregaCta(NvaCtaCliente, tpCta);
                     }
-
                     break;
+
 
                 case 5: //Eliminar cuenta de un cliente
 

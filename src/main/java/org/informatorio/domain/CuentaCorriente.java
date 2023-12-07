@@ -5,8 +5,8 @@ public class CuentaCorriente extends Cuenta{
     private double limSobregiroBco = 1000; //Establezco límite de sobregiro
     private double limiteSobregiro;
 
-    public CuentaCorriente(String tipoCta, String titular, Double saldo) {
-        super(tipoCta, titular, saldo);
+    public CuentaCorriente(Cuenta cuenta) {
+        super(cuenta.getTipoCta(), cuenta.getTitular(), cuenta.getSaldo());
         this.limiteSobregiro = limSobregiroBco;
     }
 
